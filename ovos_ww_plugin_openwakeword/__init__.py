@@ -18,20 +18,20 @@ import openwakeword
 import numpy as np
 
 class OwwHotwordPlugin(HotWordEngine):
-    """OpenWakeWord is an open-source wakeword or phrase model trained on 100% synthetic data.
+    """OpenWakeWord is an open-source wakeword or phrase engine that can be trained on 100% synthetic data.
     It can produce high-quality models for arbitrary words and phrases that perform well across
-    a wide range of voice and acoustic environments.
+    a wide range of voices and acoustic environments.
     """
 
     def __init__(self, key_phrase="hey jarvis", config=None, lang="en-us"):
         super().__init__(key_phrase, config, lang)
 
         # Load openWakeWord model
-        oww = openwakeword.Model(
-            wakeword_model_paths=[self.config.get('model')],
+        pretrained_models = openwakeword.get_pretrained_model_paths()
+        self.model = openwakeword.Model(
+            wakeword_model_paths=self.config.get('model', [i for i in pretrained_models if key_phrase in i]),
         )
-        self.model_names = list(oww.models.keys())
-        self.model = oww
+        self.model_names = list(self.model.models.keys())
 
         # Define short buffer for audio to ensure correct chunk sizes
         self.audio_buffer = []
@@ -41,7 +41,7 @@ class OwwHotwordPlugin(HotWordEngine):
         """
         Predict on input audio using openWakeWord models.
         openWakeWord requires that audio be provided in chunks of 1280 samples,
-        so small buffer is used to ensure proper sizes.
+        so a small buffer is used to ensure proper sizes.
         """
         audio_frame = np.frombuffer(chunk, dtype=np.int16).tolist()
         self.audio_buffer.extend(audio_frame)
@@ -58,9 +58,11 @@ class OwwHotwordPlugin(HotWordEngine):
                     # Set flag indicating that a wakeword was detected
                     self.has_found = True
 
-                    # Flush openWakeWord audio buffers with zeros to avoid re-activation
-                    for i in range(10):
-                        self.model.predict(np.zeros(1280).astype(np.int16))
+                    # Flush recent history of openWakeWord feature buffer to avoid re-activations
+                    n_frames = self.model.model_inputs[mdl_name]
+                    self.model.preprocessor.feature_buffer[-n_frames:, :] = np.zeros((n_frames, 96)).astype(np.float32)
+                    
+                    break
                     
 
     def found_wake_word(self, frame_data):

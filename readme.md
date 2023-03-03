@@ -8,37 +8,32 @@ can be trained on 100% synthetic data, and can run on a single Raspberry Pi 3 co
 
 `pip install ovos-ww-plugin-openwakeword`
 
-Configure your wake word in mycroft.conf
+Configure your wake word in mycroft.conf. Do not provide the `model` key to just load the default model ("hey jarvis").
 
 ```json
- "listener": {
-      "wake_word": "my_wakeword"
- },
- "hotwords": {
-    "my_wakeword": {
-        "module": "ovos-ww-plugin-openwakeword",
-        "model": "path/to/openwakeword/model/my_model.onnx"
-    }
+"listener": {
+    "wake_word": "hey_jarvis"
+},
+"hotwords": {
+  "hey_jarvis": {
+      "module": "ovos-ww-plugin-openwakeword"
   }
- 
+} 
 ```
 
-Advanced configuration
+Additional configuration options:
 
 ```json
- "listener": {
-      "wake_word": "android"
- },
- "hotwords": {
-    "android": {
-        "module": "ovos-ww-plugin-openwakeword",
-        "model": "path/to/openwakeword/model/my_model.onnx",
-        "threshold": 0.5,
-        "enable_speex_noise_suppression": true,
-        "expected_duration": 3
-    }
+"listener": {
+    "wake_word": "android"
+},
+"hotwords": {
+  "android": {
+      "module": "ovos-ww-plugin-openwakeword",
+      "model": ["path/to/openwakeword/model/my_model.onnx"], # provide paths to as many models as desired
+      "threshold": 0.5,  # the score threshold for activation (higher values means less sensitive)
   }
- 
+}
 ```
 
-See the [openWakeWord](https://www.github.com/dscripka/openwakeword) repository for more information on the possible arguments to the plugin.
+See the [openWakeWord](https://www.github.com/dscripka/openwakeword) for more details.
