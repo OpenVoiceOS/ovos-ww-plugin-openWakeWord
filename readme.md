@@ -25,10 +25,10 @@ Additional configuration options:
 
 ```json
 "listener": {
-    "wake_word": "android"
+    "wake_word": "hey_jarvis"
 },
 "hotwords": {
-  "android": {
+  "hey_jarvis": {
       "module": "ovos-ww-plugin-openwakeword",
       "model": ["path/to/openwakeword/model/my_model.onnx"],
       "threshold": 0.5,
