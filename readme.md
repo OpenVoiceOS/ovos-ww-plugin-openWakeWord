@@ -30,10 +30,14 @@ Additional configuration options:
 "hotwords": {
   "android": {
       "module": "ovos-ww-plugin-openwakeword",
-      "model": ["path/to/openwakeword/model/my_model.onnx"], # provide paths to as many models as desired
-      "threshold": 0.5,  # the score threshold for activation (higher values means less sensitive)
+      "model": ["path/to/openwakeword/model/my_model.onnx"],
+      "threshold": 0.5,
   }
 }
 ```
 
-See the [openWakeWord](https://www.github.com/dscripka/openwakeword) for more details.
+For the `model` key, provide paths to as many openWakeWord models as desired and any of them can be used to activate OVOS.
+
+For the `threshold` key, set the score threshold for activation (higher values means less sensitive). The default value of 0.5 is reccomended for most use-cases.
+
+See the [openWakeWord](https://www.github.com/dscripka/openwakeword) repository for more details.
