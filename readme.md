@@ -30,14 +30,18 @@ Additional configuration options:
 "hotwords": {
   "hey_jarvis": {
       "module": "ovos-ww-plugin-openwakeword",
-      "model": ["path/to/openwakeword/model/my_model.onnx"],
-      "threshold": 0.5,
+      "models": ["path/to/openwakeword/model/hey_jarvis.onnx"],
+      "custom_verifier_models": {"hey_jarvis": "path/to/openwakeword/custom/verifier/model.pkl"},
+      "threshold": 0.3,
+      "custom_verifier_threshold": 0.1
   }
 }
 ```
 
-For the `model` key, provide paths to as many openWakeWord models as desired and any of them can be used to activate OVOS.
+For the `model` key, provide paths to as many openWakeWord models (in `.onnx` format) as desired and any of them can be used to activate OVOS.
 
-For the `threshold` key, set the score threshold for activation (higher values means less sensitive). The default value of 0.5 is reccomended for most use-cases.
+For the `threshold` key, set the score threshold for activation (higher values means less sensitive). The default value of 0.5 is recommended for most use-cases.
+
+The `custom_verifier_model` and `custom_verifier_threshold` arguments are for the [user-specific verification models](https://github.com/dscripka/openWakeWord/blob/main/docs/custom_verifier_models.md) that are supported by `openWakeWord>=0.3.0`. Training and using a custom verifier model can significantly improve performance if the included pre-trained models are not sufficient for a given deployment scenario.
 
 See the [openWakeWord](https://www.github.com/dscripka/openwakeword) repository for more details.

@@ -29,7 +29,9 @@ class OwwHotwordPlugin(HotWordEngine):
         # Load openWakeWord model
         pretrained_models = openwakeword.get_pretrained_model_paths()
         self.model = openwakeword.Model(
-            wakeword_model_paths=self.config.get('model', [i for i in pretrained_models if key_phrase in i]),
+            wakeword_model_paths=self.config.get('models', [i for i in pretrained_models if key_phrase in i]),
+            custom_verifier_models=self.config.get('custom_verifier_models', {}),
+            custom_verifier_threshold=self.config.get('custom_verifier_threshold', 0.1)
         )
         self.model_names = list(self.model.models.keys())
 
