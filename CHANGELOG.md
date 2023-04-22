@@ -1,5 +1,9 @@
 # Changelog
 
+## [V0.2.0a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.0a1) (2023-04-22)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.1.0...V0.2.0a1)
+
 ## [V0.1.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.1.0) (2023-03-06)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.1.0a2...V0.1.0)
