@@ -46,13 +46,14 @@ class OwwHotwordPlugin(HotWordEngine):
         so a small buffer is used to ensure proper sizes.
         """
         audio_frame = np.frombuffer(chunk, dtype=np.int16).tolist()
-        self.audio_buffer.extend(audio_frame)
-        if len(self.audio_buffer) > 1280:
-            # Get prediction from openWakeWord
-            prediction = self.model.predict(list(self.audio_buffer[0:1280]))
+        self.audio_buffer.extend(audio_frame)  # build up the buffer until it has enough samples
 
-            # Advance the buffer
-            self.audio_buffer = self.audio_buffer[1280:]
+        if len(self.audio_buffer) >= 1280:
+            # Get prediction from openWakeWord
+            prediction = self.model.predict(self.audio_buffer)
+
+            # Clear the buffer after each prediction
+            self.audio_buffer = []
 
             # Check for score above threshold
             for mdl_name in self.model_names:
@@ -60,9 +61,11 @@ class OwwHotwordPlugin(HotWordEngine):
                     # Set flag indicating that a wakeword was detected
                     self.has_found = True
 
-                    # Flush recent history of openWakeWord feature buffer to avoid re-activations
+                    # Flush recent history of openWakeWord internal audio buffer to avoid re-activations
                     n_frames = self.model.model_inputs[mdl_name]
+                    self.model.preprocessor.raw_data_buffer.extend([0.0]*n_frames*1280)
                     self.model.preprocessor.feature_buffer[-n_frames:, :] = np.zeros((n_frames, 96)).astype(np.float32)
+                    self.model.preprocessor.melspectrogram_buffer[-250:, :] = np.zeros((250, 32)).astype(np.float32)
                     
                     break
                     
