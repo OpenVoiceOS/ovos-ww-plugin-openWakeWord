@@ -57,7 +57,8 @@ class OwwHotwordPlugin(HotWordEngine):
 
             # Check for score above threshold
             for mdl_name in self.model_names:
-                if prediction[mdl_name] >= self.config.get("threshold"):
+                # https://github.com/dscripka/openwakeword#threshold-scores-for-activation
+                if prediction[mdl_name] >= self.config.get("threshold", 0.5):
                     # Set flag indicating that a wakeword was detected
                     self.has_found = True
 
