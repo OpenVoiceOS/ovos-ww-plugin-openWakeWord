@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/HEAD)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.0...HEAD)
+
+**Fixed bugs:**
+
+- assign default threshold [\#3](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/3) ([mikejgray](https://github.com/mikejgray))
+
+## [V0.2.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.0) (2023-04-22)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.0a1...V0.2.0)
+
 ## [V0.2.0a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.0a1) (2023-04-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.1.0...V0.2.0a1)
