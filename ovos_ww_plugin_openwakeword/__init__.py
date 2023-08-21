@@ -48,12 +48,12 @@ class OwwHotwordPlugin(HotWordEngine):
         audio_frame = np.frombuffer(chunk, dtype=np.int16).tolist()
         self.audio_buffer.extend(audio_frame)  # build up the buffer until it has enough samples
 
-        if len(self.audio_buffer) >= 1280:
-            # Get prediction from openWakeWord
-            prediction = self.model.predict(self.audio_buffer)
+        while len(self.audio_buffer) >= 1280:
+            # Get prediction from openWakeWord.
+            prediction = self.model.predict(self.audio_buffer[:1280])
 
-            # Clear the buffer after each prediction
-            self.audio_buffer = []
+            # Clear the first 1280 bytes from buffer after each prediction
+            del self.audio_buffer[:1280]
 
             # Check for score above threshold
             for mdl_name in self.model_names:
