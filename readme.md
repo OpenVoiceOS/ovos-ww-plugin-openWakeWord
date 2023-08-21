@@ -31,6 +31,7 @@ Additional configuration options:
   "hey_jarvis": {
       "module": "ovos-ww-plugin-openwakeword",
       "models": ["path/to/openwakeword/model/hey_jarvis.onnx"],
+      "inference_framework": "onnx",
       "custom_verifier_models": {"hey_jarvis": "path/to/openwakeword/custom/verifier/model.pkl"},
       "threshold": 0.3,
       "custom_verifier_threshold": 0.1
@@ -38,7 +39,7 @@ Additional configuration options:
 }
 ```
 
-For the `model` key, provide paths to as many openWakeWord models (in `.onnx` format) as desired and any of them can be used to activate OVOS.
+For the `model` key, provide paths to as many openWakeWord models (in `.onnx` or `tflite` format) as desired and any of them can be used to activate OVOS.
 
 For the `threshold` key, set the score threshold for activation (higher values means less sensitive). The default value of 0.5 is recommended for most use-cases.
 
