@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/HEAD)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.1...HEAD)
+
+**Merged pull requests:**
+
+- fix: convert lists to np.array [\#6](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/6) ([mikejgray](https://github.com/mikejgray))
+
+## [V0.2.1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.1) (2023-06-24)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.1a1...V0.2.1)
+
 ## [V0.2.1a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.1a1) (2023-06-24)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.0...V0.2.1a1)
