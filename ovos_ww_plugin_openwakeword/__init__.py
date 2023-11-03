@@ -49,6 +49,8 @@ class OwwHotwordPlugin(HotWordEngine):
         self.audio_buffer.extend(audio_frame)  # build up the buffer until it has enough samples
 
         if len(self.audio_buffer) >= 1280:
+            if isinstance(self.audio_buffer, list):
+                self.audio_buffer = np.asarray(self.audio_buffer)
             # Get prediction from openWakeWord
             prediction = self.model.predict(self.audio_buffer)
 
