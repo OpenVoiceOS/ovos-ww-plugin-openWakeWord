@@ -8,7 +8,7 @@ can be trained on 100% synthetic data, and can run on a single Raspberry Pi 3 co
 
 `pip install ovos-ww-plugin-openwakeword`
 
-Configure your wake word in mycroft.conf. Do not provide the `model` key to just load the default model ("hey jarvis").
+Configure your wake word in mycroft.conf. Do not provide the `models` key to just load the default model ("hey jarvis").
 
 ```json
 "listener": {
@@ -30,7 +30,8 @@ Additional configuration options:
 "hotwords": {
   "hey_jarvis": {
       "module": "ovos-ww-plugin-openwakeword",
-      "models": ["path/to/openwakeword/model/hey_jarvis.onnx"],
+      "models": ["path/to/openwakeword/model/hey_jarvis.tflite"],
+      "inference_framework": "tflite",
       "custom_verifier_models": {"hey_jarvis": "path/to/openwakeword/custom/verifier/model.pkl"},
       "threshold": 0.3,
       "custom_verifier_threshold": 0.1
@@ -38,7 +39,7 @@ Additional configuration options:
 }
 ```
 
-For the `model` key, provide paths to as many openWakeWord models (in `.onnx` format) as desired and any of them can be used to activate OVOS.
+For the `models` key, provide paths to as many openWakeWord models (in `.onnx` or `.tflite` format) as desired and any of them can be used to activate OVOS. The `inference_framework` argument should match the type of openwakeword model(s) provided in the in the `models` arguments and can be either `tflite` or `onnx` for Tensorflow Lite and ONNX, respectively. `tflite` (the default for `openWakeWord >=0.5.0`) has better performance on most platforms, but `onnx` may have broader compatibility.
 
 For the `threshold` key, set the score threshold for activation (higher values means less sensitive). The default value of 0.5 is recommended for most use-cases.
 

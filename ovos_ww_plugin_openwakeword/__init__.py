@@ -31,7 +31,8 @@ class OwwHotwordPlugin(HotWordEngine):
         self.model = openwakeword.Model(
             wakeword_model_paths=self.config.get('models', [i for i in pretrained_models if key_phrase in i]),
             custom_verifier_models=self.config.get('custom_verifier_models', {}),
-            custom_verifier_threshold=self.config.get('custom_verifier_threshold', 0.1)
+            custom_verifier_threshold=self.config.get('custom_verifier_threshold', 0.1),
+            inference_framework=self.config.get('inference_framework', 'tflite')
         )
         self.model_names = list(self.model.models.keys())
 
