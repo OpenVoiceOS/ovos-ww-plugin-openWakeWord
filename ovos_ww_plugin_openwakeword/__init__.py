@@ -26,8 +26,8 @@ class OwwHotwordPlugin(HotWordEngine):
 
     def __init__(self, key_phrase="hey jarvis", config=None, lang="en-us"):
         super().__init__(key_phrase, config, lang)
-        # Support for 0.6.0, which removes packaged defaults, but still requires these models
-        download_models(['melspectrogram', 'silero_vad', 'timer_v0.1', 'weather_v0.1'])
+        # Support for 0.6.0, which removes packaged defaults
+        download_models()
 
         # Load openWakeWord model
         pretrained_models = openwakeword.get_pretrained_model_paths() or []
