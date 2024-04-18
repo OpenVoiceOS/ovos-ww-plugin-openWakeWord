@@ -25,9 +25,9 @@ class OwwHotwordPlugin(HotWordEngine):
     """
 
     def __init__(self, key_phrase="hey jarvis", config=None, lang="en-us"):
+        download_models()
         super().__init__(key_phrase, config, lang)
         # Support for 0.6.0, which removes packaged defaults
-        download_models()
 
         # Load openWakeWord model
         pretrained_models = openwakeword.get_pretrained_model_paths() or []
