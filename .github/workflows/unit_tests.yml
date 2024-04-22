@@ -4,30 +4,30 @@ on:
     branches:
       - dev
     paths-ignore:
-      - 'ovos_ww_plugin_openwakeword/version.py'
-      - 'requirements/**'
-      - 'examples/**'
-      - '.github/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'CHANGELOG.md'
-      - 'MANIFEST.in'
-      - 'readme.md'
-      - 'scripts/**'
+      - "ovos_ww_plugin_openwakeword/version.py"
+      - "requirements/**"
+      - "examples/**"
+      - ".github/**"
+      - ".gitignore"
+      - "LICENSE"
+      - "CHANGELOG.md"
+      - "MANIFEST.in"
+      - "readme.md"
+      - "scripts/**"
   push:
     branches:
       - master
     paths-ignore:
-      - 'ovos_ww_plugin_openwakeword/version.py'
-      - 'requirements/**'
-      - 'examples/**'
-      - '.github/**'
-      - '.gitignore'
-      - 'LICENSE'
-      - 'CHANGELOG.md'
-      - 'MANIFEST.in'
-      - 'readme.md'
-      - 'scripts/**'
+      - "ovos_ww_plugin_openwakeword/version.py"
+      - "requirements/**"
+      - "examples/**"
+      - ".github/**"
+      - ".gitignore"
+      - "LICENSE"
+      - "CHANGELOG.md"
+      - "MANIFEST.in"
+      - "readme.md"
+      - "scripts/**"
   workflow_dispatch:
 
 jobs:
@@ -35,12 +35,12 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        python-version: [ 3.7, 3.8, 3.9, "3.10" ]
+        python-version: [3.8, 3.9, "3.10", "3.11"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install System Dependencies
@@ -53,7 +53,7 @@ jobs:
           pip install .
       - name: Install test dependencies
         run: |
-          pip install pytest pytest-timeout pytest-cov
+          pip install pytest pytest-timeout pytest-cov ovos_plugin_manager
       - name: Run unittests
         run: |
           pytest --cov=ovos_ww_plugin_openwakeword --cov-report xml test/unittests

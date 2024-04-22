@@ -16,6 +16,7 @@ from ovos_plugin_manager.templates.hotwords import HotWordEngine
 from ovos_utils.log import LOG
 import openwakeword
 import numpy as np
+from openwakeword.utils import download_models
 
 class OwwHotwordPlugin(HotWordEngine):
     """OpenWakeWord is an open-source wakeword or phrase engine that can be trained on 100% synthetic data.
@@ -25,11 +26,13 @@ class OwwHotwordPlugin(HotWordEngine):
 
     def __init__(self, key_phrase="hey jarvis", config=None, lang="en-us"):
         super().__init__(key_phrase, config, lang)
+        # Support for 0.6.0, which removes packaged defaults
+        download_models()
 
         # Load openWakeWord model
-        pretrained_models = openwakeword.get_pretrained_model_paths()
+        pretrained_models = openwakeword.get_pretrained_model_paths() or []
         self.model = openwakeword.Model(
-            wakeword_model_paths=self.config.get('models', [i for i in pretrained_models if key_phrase in i]),
+            wakeword_models=self.config.get('models', [i for i in pretrained_models if key_phrase in i]),
             custom_verifier_models=self.config.get('custom_verifier_models', {}),
             custom_verifier_threshold=self.config.get('custom_verifier_threshold', 0.1),
             inference_framework=self.config.get('inference_framework', 'tflite')
@@ -70,9 +73,9 @@ class OwwHotwordPlugin(HotWordEngine):
                     self.model.preprocessor.raw_data_buffer.extend([0.0]*n_frames*1280)
                     self.model.preprocessor.feature_buffer[-n_frames:, :] = np.zeros((n_frames, 96)).astype(np.float32)
                     self.model.preprocessor.melspectrogram_buffer[-250:, :] = np.zeros((250, 32)).astype(np.float32)
-                    
+
                     break
-                    
+
 
     def found_wake_word(self, frame_data):
         if self.has_found:
