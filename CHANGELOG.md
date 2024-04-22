@@ -1,5 +1,22 @@
 # Changelog
 
+## [Unreleased](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/HEAD)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.4.0...HEAD)
+
+**Closed issues:**
+
+- Downloading melspectrogram, embedding, and VAD models to non-existent folder [\#8](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/8)
+- Add config item to specify inference framework. [\#5](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/5)
+
+**Merged pull requests:**
+
+- fix: support openwakeword 0.6.0 [\#9](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/9) ([mikejgray](https://github.com/mikejgray))
+
+## [V0.4.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.4.0) (2023-12-23)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.3.1...V0.4.0)
+
 ## [V0.3.1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.3.1) (2023-12-23)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.3.1a1...V0.3.1)
