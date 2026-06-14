@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovos-ww-plugin-openwakeword"
+dynamic = ["version"]
+description = "A wakeword plugin for OpenVoiceOS for the openWakeWord library"
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+authors = [{name = "dscripka", email = "david.scripka@gmail.com"}]
+readme = "readme.md"
+requires-python = ">=3.9"
+dependencies = [
+    "openwakeword>=0.5.0,<1",
+    "ovos-plugin-manager>=2.1.0,<3.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "ovoscope",
+    "openwakeword>=0.5.0",
+]
+
+[project.entry-points."mycroft.plugin.wake_word"]
+ovos-ww-plugin-openwakeword = "ovos_ww_plugin_openwakeword:OwwHotwordPlugin"
+
+[project.urls]
+Homepage = "https://github.com/OpenVoiceOS/ovos-ww-plugin-openwakeword"
+
+[tool.setuptools.dynamic]
+version = {attr = "ovos_ww_plugin_openwakeword.version.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["."]
