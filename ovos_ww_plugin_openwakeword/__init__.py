@@ -71,7 +71,9 @@ class OwwHotwordPlugin(HotWordEngine):
                     n_frames = self.model.model_inputs[mdl_name]
                     self.model.preprocessor.raw_data_buffer.extend([0.0] * n_frames * 1280)
                     self.model.preprocessor.feature_buffer[-n_frames:, :] = np.zeros((n_frames, 96)).astype(np.float32)
-                    self.model.preprocessor.melspectrogram_buffer[-250:, :] = np.zeros((250, 32)).astype(np.float32)
+                    mel_buf = self.model.preprocessor.melspectrogram_buffer
+                    n_mel = min(250, mel_buf.shape[0])
+                    mel_buf[-n_mel:, :] = np.zeros((n_mel, 32)).astype(np.float32)
 
                     break
 
