@@ -17,11 +17,8 @@ from pathlib import Path
 
 import pytest
 
-pytest.importorskip("ovoscope", reason="ovoscope not installed")
-pytest.importorskip("openwakeword", reason="openwakeword not installed")
-
-from ovoscope.voice_loop import MiniVoiceLoop  # noqa: E402
-from ovos_ww_plugin_openwakeword import OwwHotwordPlugin  # noqa: E402
+from ovoscope.voice_loop import MiniVoiceLoop
+from ovos_ww_plugin_openwakeword import OwwHotwordPlugin
 
 # ---------------------------------------------------------------------------
 # Fixtures
