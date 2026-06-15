@@ -10,6 +10,8 @@ jobs:
     uses: OpenVoiceOS/gh-automations/.github/workflows/build-tests.yml@dev
     secrets: inherit
     with:
-      python_versions: '["3.10", "3.11", "3.12"]'
+      # openwakeword requires tflite-runtime (<3,>=2.8.0), which only ships
+      # wheels for CPython 3.8-3.11; newer interpreters cannot resolve it.
+      python_versions: '["3.10", "3.11"]'
       install_extras: 'test'
       test_path: 'test'

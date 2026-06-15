@@ -22,9 +22,9 @@ dependencies = [
 
 [project.optional-dependencies]
 test = [
-    "pytest",
-    "ovoscope",
-    "openwakeword>=0.5.0",
+    "pytest<9",
+    "ovoscope>=0.19.0a1,<1.0.0",
+    "ovos-dinkum-listener",
 ]
 
 [project.entry-points."mycroft.plugin.wake_word"]
@@ -38,3 +38,4 @@ version = {attr = "ovos_ww_plugin_openwakeword.version.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["."]
+include = ["ovos_ww_plugin_openwakeword*"]

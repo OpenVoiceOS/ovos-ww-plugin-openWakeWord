@@ -9,3 +9,8 @@ jobs:
   license_check:
     uses: OpenVoiceOS/gh-automations/.github/workflows/license-check.yml@dev
     secrets: inherit
+    with:
+      # openwakeword pins tflite-runtime (<3,>=2.8.0), which only ships wheels
+      # for CPython <=3.11; pin the audit interpreter so the install resolves.
+      python_version: "3.11"
+      install_extras: "[test]"
