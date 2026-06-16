@@ -1,0 +1,19 @@
+name: License Check
+
+on:
+  pull_request:
+    branches: [dev]
+  workflow_dispatch:
+
+jobs:
+  license_check:
+    uses: OpenVoiceOS/gh-automations/.github/workflows/license-check.yml@dev
+    secrets: inherit
+    with:
+      # openwakeword pins tflite-runtime (<3,>=2.8.0), which only ships wheels
+      # for CPython <=3.11; pin the audit interpreter so the install resolves.
+      python_version: "3.11"
+      install_extras: "[test]"
+      # tqdm (pulled by openwakeword) is dual-licensed MPL-2.0 AND MIT; permissive
+      # via the MIT option and used as an unmodified imported library.
+      exclude_packages: "(?i:^tqdm.*)"

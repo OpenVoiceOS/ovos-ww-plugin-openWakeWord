@@ -1,73 +1,24 @@
 # Changelog
 
-## [V0.4.1a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.4.1a1) (2024-04-22)
+## [0.4.4a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.4a1) (2026-06-16)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.4.0...V0.4.1a1)
-
-**Closed issues:**
-
-- Downloading melspectrogram, embedding, and VAD models to non-existent folder [\#8](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/8)
-- Add config item to specify inference framework. [\#5](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/5)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.3a1...0.4.4a1)
 
 **Merged pull requests:**
 
-- fix: support openwakeword 0.6.0 [\#9](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/9) ([mikejgray](https://github.com/mikejgray))
+- fix: use canonical opm.\* entry-point group [\#27](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/27) ([JarbasAl](https://github.com/JarbasAl))
 
-## [V0.4.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.4.0) (2023-12-23)
+## [0.4.3a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.3a1) (2026-06-15)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.3.1...V0.4.0)
-
-## [V0.3.1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.3.1) (2023-12-23)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.3.1a1...V0.3.1)
-
-## [V0.3.1a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.3.1a1) (2023-12-23)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.3.0...V0.3.1a1)
-
-## [V0.3.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.3.0) (2023-11-03)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.3.0a1...V0.3.0)
-
-## [V0.3.0a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.3.0a1) (2023-11-03)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.1...V0.3.0a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.4.1...0.4.3a1)
 
 **Merged pull requests:**
 
-- fix: convert lists to np.array [\#6](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/6) ([mikejgray](https://github.com/mikejgray))
-
-## [V0.2.1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.1) (2023-06-24)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.1a1...V0.2.1)
-
-## [V0.2.1a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.1a1) (2023-06-24)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.0...V0.2.1a1)
-
-**Fixed bugs:**
-
-- assign default threshold [\#3](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/3) ([mikejgray](https://github.com/mikejgray))
-
-## [V0.2.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.0) (2023-04-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.2.0a1...V0.2.0)
-
-## [V0.2.0a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.2.0a1) (2023-04-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.1.0...V0.2.0a1)
-
-## [V0.1.0](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.1.0) (2023-03-06)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.1.0a2...V0.1.0)
-
-## [V0.1.0a2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.1.0a2) (2023-03-06)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.1.0a1...V0.1.0a2)
-
-## [V0.1.0a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/V0.1.0a1) (2023-03-03)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/b5bed142257922aa1bbed4044a584c456de3379e...V0.1.0a1)
+- test: ovoscope listener e2e \(openWakeWord\) + fix mel-buffer crash [\#23](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/23) ([JarbasAl](https://github.com/JarbasAl))
+- chore\(deps\): update dependency ovos-plugin-manager to v2 [\#18](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/18) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency python to 3.14 [\#12](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/12) ([renovate[bot]](https://github.com/apps/renovate))
+- chore: Configure Renovate [\#11](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/11) ([renovate[bot]](https://github.com/apps/renovate))
+- fix: compatibility with ovos-plugin-manager 1.X.X [\#10](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/10) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
