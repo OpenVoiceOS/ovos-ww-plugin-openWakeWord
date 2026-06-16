@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.4a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.4a1) (2026-06-16)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.3a1...0.4.4a1)
+
+**Merged pull requests:**
+
+- fix: use canonical opm.\* entry-point group [\#27](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/27) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.3a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.3a1) (2026-06-15)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.4.1...0.4.3a1)
