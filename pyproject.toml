@@ -31,7 +31,7 @@ test = [
     "ovos-dinkum-listener",
 ]
 
-[project.entry-points."mycroft.plugin.wake_word"]
+[project.entry-points."opm.wake_word"]
 ovos-ww-plugin-openwakeword = "ovos_ww_plugin_openwakeword:OwwHotwordPlugin"
 
 [project.urls]
