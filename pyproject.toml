@@ -21,7 +21,7 @@ dependencies = [
     # tflite-runtime (required by openwakeword on Linux) ships C-extensions
     # built against the numpy 1.x ABI and crashes under numpy 2.x with
     # "numpy.core.multiarray failed to import".
-    "numpy<2",
+    "numpy<3",
 ]
 
 [project.optional-dependencies]
