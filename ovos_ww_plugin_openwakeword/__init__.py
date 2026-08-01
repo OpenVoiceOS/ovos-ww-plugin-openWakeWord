@@ -11,12 +11,11 @@
 # limitations under the License.
 #
 
-# Imports
-from ovos_plugin_manager.templates.hotwords import HotWordEngine
-from ovos_utils.log import LOG
-import openwakeword
 import numpy as np
+import openwakeword
 from openwakeword.utils import download_models
+from ovos_plugin_manager.templates.hotwords import HotWordEngine
+
 
 class OwwHotwordPlugin(HotWordEngine):
     """OpenWakeWord is an open-source wakeword or phrase engine that can be trained on 100% synthetic data.
@@ -24,8 +23,8 @@ class OwwHotwordPlugin(HotWordEngine):
     a wide range of voices and acoustic environments.
     """
 
-    def __init__(self, key_phrase="hey jarvis", config=None, lang="en-us"):
-        super().__init__(key_phrase, config, lang)
+    def __init__(self, key_phrase="hey jarvis", config=None):
+        super().__init__(key_phrase, config)
         # Support for 0.6.0, which removes packaged defaults
         download_models()
 
@@ -43,7 +42,7 @@ class OwwHotwordPlugin(HotWordEngine):
         self.audio_buffer = []
         self.has_found = False
 
-    def update(self, chunk):
+    def update(self, chunk: bytes):
         """
         Predict on input audio using openWakeWord models.
         openWakeWord requires that audio be provided in chunks of 1280 samples,
@@ -70,14 +69,15 @@ class OwwHotwordPlugin(HotWordEngine):
 
                     # Flush recent history of openWakeWord internal audio buffer to avoid re-activations
                     n_frames = self.model.model_inputs[mdl_name]
-                    self.model.preprocessor.raw_data_buffer.extend([0.0]*n_frames*1280)
+                    self.model.preprocessor.raw_data_buffer.extend([0.0] * n_frames * 1280)
                     self.model.preprocessor.feature_buffer[-n_frames:, :] = np.zeros((n_frames, 96)).astype(np.float32)
-                    self.model.preprocessor.melspectrogram_buffer[-250:, :] = np.zeros((250, 32)).astype(np.float32)
+                    mel_buf = self.model.preprocessor.melspectrogram_buffer
+                    n_mel = min(250, mel_buf.shape[0])
+                    mel_buf[-n_mel:, :] = np.zeros((n_mel, 32)).astype(np.float32)
 
                     break
 
-
-    def found_wake_word(self, frame_data):
+    def found_wake_word(self) -> bool:
         if self.has_found:
             self.has_found = False
             return True
