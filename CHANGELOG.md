@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.5a2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.5a2) (2026-08-01)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.5a1...0.4.5a2)
+
+**Merged pull requests:**
+
+- docs: rewrite README in Simplified Technical English [\#33](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/33) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.5a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.5a1) (2026-06-16)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.4a1...0.4.5a1)

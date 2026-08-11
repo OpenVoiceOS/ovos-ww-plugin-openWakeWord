@@ -1,14 +1,16 @@
 ## Description
 
-This is an OVOS plugin for [openWakeWord](https://www.github.com/dscripka/openwakeword), an open-source
-wakeword or phrase detection system. It has competitive performance compared to Mycroft Precise or Picovoice Porcupine,
-can be trained on 100% synthetic data, and can run on a single Raspberry Pi 3 core.
+This plugin adds [openWakeWord](https://www.github.com/dscripka/openwakeword) support to OpenVoiceOS (OVOS). openWakeWord is an open-source wake word detection system. It trains on synthetic data and runs on a single core of a Raspberry Pi 3.
 
 ## Install
 
-`pip install ovos-ww-plugin-openwakeword`
+Run this command:
 
-Configure your wake word in mycroft.conf. Do not provide the `models` key to just load the default model ("hey jarvis").
+```bash
+pip install ovos-ww-plugin-openwakeword
+```
+
+Set your wake word in `mycroft.conf`. Do not set the `models` key if you want the default model ("hey jarvis").
 
 ```json
 "listener": {
@@ -18,10 +20,12 @@ Configure your wake word in mycroft.conf. Do not provide the `models` key to jus
   "hey_jarvis": {
       "module": "ovos-ww-plugin-openwakeword"
   }
-} 
+}
 ```
 
-Additional configuration options:
+## Configuration
+
+The plugin accepts these extra options:
 
 ```json
 "listener": {
@@ -39,10 +43,20 @@ Additional configuration options:
 }
 ```
 
-For the `models` key, provide paths to as many openWakeWord models (in `.onnx` or `.tflite` format) as desired and any of them can be used to activate OVOS. The `inference_framework` argument should match the type of openwakeword model(s) provided in the in the `models` arguments and can be either `tflite` or `onnx` for Tensorflow Lite and ONNX, respectively. `tflite` (the default for `openWakeWord >=0.5.0`) has better performance on most platforms, but `onnx` may have broader compatibility.
+- `models`: paths to one or more openWakeWord models, in `.onnx` or `.tflite` format. Any model in the list can activate OVOS.
+- `inference_framework`: the format of the models in `models`. Use `tflite` or `onnx`. `tflite` is the default for `openWakeWord >=0.5.0` and gives better performance on most platforms. `onnx` may work on more platforms.
 
-For the `threshold` key, set the score threshold for activation (higher values means less sensitive). The default value of 0.5 is recommended for most use-cases.
-
-The `custom_verifier_model` and `custom_verifier_threshold` arguments are for the [user-specific verification models](https://github.com/dscripka/openWakeWord/blob/main/docs/custom_verifier_models.md) that are supported by `openWakeWord>=0.3.0`. Training and using a custom verifier model can significantly improve performance if the included pre-trained models are not sufficient for a given deployment scenario.
+- `threshold`: the score needed to trigger activation. Higher values need a stronger match. The default, 0.5, works for most cases.
+- `custom_verifier_model` and `custom_verifier_threshold`: paths and settings for [custom verifier models](https://github.com/dscripka/openWakeWord/blob/main/docs/custom_verifier_models.md), supported since `openWakeWord>=0.3.0`. A custom verifier model can improve performance when the included pre-trained models do not fit your deployment.
 
 See the [openWakeWord](https://www.github.com/dscripka/openwakeword) repository for more details.
+
+## Related projects
+
+- [openWakeWord](https://www.github.com/dscripka/openwakeword): the wake word engine this plugin wraps.
+- [OVOS Plugin Manager](https://github.com/OpenVoiceOS/ovos-plugin-manager): loads and configures this plugin.
+- [ovos-ww-plugin-precise-lite](https://github.com/OpenVoiceOS/ovos-ww-plugin-precise-lite): another OVOS wake word plugin.
+
+## License
+
+Apache-2.0
