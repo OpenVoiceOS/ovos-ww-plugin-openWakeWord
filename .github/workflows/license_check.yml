@@ -16,4 +16,14 @@ jobs:
       install_extras: "[test]"
       # tqdm (pulled by openwakeword) is dual-licensed MPL-2.0 AND MIT; permissive
       # via the MIT option and used as an unmodified imported library.
-      exclude_packages: "(?i:^tqdm.*)"
+      #
+      # The [test] extra pulls in ovos-dinkum-listener, which drags in four
+      # packages the checker cannot resolve to a license category ("Error"),
+      # all permissively licensed and used as unmodified imported libraries:
+      #   setuptools — MIT (PEP 639 `License-Expression: MIT`, no legacy
+      #          classifier for the checker to fall back to).
+      #   wcwidth — MIT (same PEP 639 `License-Expression` gap as setuptools).
+      #   watchdog — Apache-2.0 (bundled LICENSE + OSI classifier), but the
+      #          installed metadata the checker inspects doesn't expose it.
+      #   websocket-client — Apache-2.0, same metadata-exposure gap as watchdog.
+      exclude_packages: "(?i:^tqdm.*)|(?i:^setuptools([=<>!~ @;].*)?$)|(?i:^wcwidth([=<>!~ @;].*)?$)|(?i:^watchdog([=<>!~ @;].*)?$)|(?i:^websocket[-_]client([=<>!~ @;].*)?$)"

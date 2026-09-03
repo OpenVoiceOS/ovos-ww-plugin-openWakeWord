@@ -4,10 +4,20 @@ This plugin adds [openWakeWord](https://www.github.com/dscripka/openwakeword) su
 
 ## Install
 
-Run this command:
+On Python 3.11 and older, run this command:
 
 ```bash
 pip install ovos-ww-plugin-openwakeword
+```
+
+On Python 3.12 and newer, a plain install fails to resolve: openwakeword
+requires tflite-runtime, and tflite-runtime has no wheels for these
+interpreters. Install openwakeword without its declared dependencies, then
+let this plugin provide the dependencies the onnx path needs:
+
+```bash
+pip install --no-deps "openwakeword>=0.5.0,<1"
+pip install "ovos-ww-plugin-openwakeword[onnx]"
 ```
 
 Set your wake word in `mycroft.conf`. Do not set the `models` key if you want the default model ("hey jarvis").
@@ -44,7 +54,7 @@ The plugin accepts these extra options:
 ```
 
 - `models`: paths to one or more openWakeWord models, in `.onnx` or `.tflite` format. Any model in the list can activate OVOS.
-- `inference_framework`: the format of the models in `models`. Use `tflite` or `onnx`. `tflite` is the default for `openWakeWord >=0.5.0` and gives better performance on most platforms. `onnx` may work on more platforms.
+- `inference_framework`: the format of the models in `models`. Use `tflite` or `onnx`. The plugin picks `tflite` when tflite-runtime is installed and `onnx` when it is not — on Python 3.12+ tflite-runtime is usually not installable, so `onnx` is the effective default there. openwakeword itself falls back to onnx at runtime when tflite-runtime is absent, even if `tflite` was requested.
 
 - `threshold`: the score needed to trigger activation. Higher values need a stronger match. The default, 0.5, works for most cases.
 - `custom_verifier_model` and `custom_verifier_threshold`: paths and settings for [custom verifier models](https://github.com/dscripka/openWakeWord/blob/main/docs/custom_verifier_models.md), supported since `openWakeWord>=0.3.0`. A custom verifier model can improve performance when the included pre-trained models do not fit your deployment.

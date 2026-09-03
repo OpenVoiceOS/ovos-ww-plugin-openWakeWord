@@ -11,7 +11,15 @@ jobs:
     secrets: inherit
     with:
       # openwakeword requires tflite-runtime (<3,>=2.8.0), which only ships
-      # wheels for CPython 3.8-3.11; newer interpreters cannot resolve it.
-      python_versions: '["3.10", "3.11"]'
-      install_extras: 'test'
+      # wheels for CPython 3.8-3.11; on 3.12+ this plugin falls back to the
+      # onnx inference path instead (see the "onnx" extra).
+      python_versions: '["3.10", "3.11", "3.12", "3.13"]'
+      # openwakeword's own PyPI metadata unconditionally requires
+      # tflite-runtime, which has no wheel for cp312+. Pre-installing it
+      # with --no-deps (documented in pyproject.toml's "onnx" extra) skips
+      # that requirement and lets pip fill in the onnx-path runtime deps
+      # from the wheel's [onnx] extra below. Harmless on 3.10/3.11, where
+      # openwakeword is already a normal dependency and this is a no-op.
+      pre_install_pip: '--no-deps "openwakeword>=0.5.0,<1"'
+      install_extras: '[test,onnx]'
       test_path: 'test'
