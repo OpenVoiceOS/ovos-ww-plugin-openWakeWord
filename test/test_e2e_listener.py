@@ -18,7 +18,12 @@ from pathlib import Path
 import pytest
 
 from ovoscope.voice_loop import MiniVoiceLoop
-from ovos_ww_plugin_openwakeword import OwwHotwordPlugin
+from ovos_ww_plugin_openwakeword import OwwHotwordPlugin, _tflite_available
+
+pytestmark = pytest.mark.skipif(
+    not _tflite_available(),
+    reason="this fixture pins inference_framework='tflite'; tflite-runtime not installed in this interpreter",
+)
 
 # ---------------------------------------------------------------------------
 # Fixtures
