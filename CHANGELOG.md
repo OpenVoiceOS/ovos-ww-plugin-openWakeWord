@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.6a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.6a1) (2026-09-18)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.5a2...0.4.6a1)
+
+**Merged pull requests:**
+
+- fix: install and run without tflite-runtime \(onnx default on py3.12+\) [\#36](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/36) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [0.4.5a2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.5a2) (2026-08-01)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.5a1...0.4.5a2)
