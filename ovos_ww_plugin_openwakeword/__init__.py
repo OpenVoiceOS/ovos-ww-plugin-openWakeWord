@@ -155,13 +155,13 @@ class OwwHotwordPlugin(HotWordEngine):
                     # Set flag indicating that a wakeword was detected
                     self.has_found = True
 
-                    # Flush recent history of openWakeWord internal audio buffer to avoid re-activations
-                    n_frames = self.model.model_inputs[mdl_name]
-                    self.model.preprocessor.raw_data_buffer.extend([0.0] * n_frames * 1280)
-                    self.model.preprocessor.feature_buffer[-n_frames:, :] = np.zeros((n_frames, 96)).astype(np.float32)
-                    mel_buf = self.model.preprocessor.melspectrogram_buffer
-                    n_mel = min(250, mel_buf.shape[0])
-                    mel_buf[-n_mel:, :] = np.zeros((n_mel, 32)).astype(np.float32)
+                    # Flush openWakeWord's internal buffers to avoid re-activations.
+                    # Zeroing the mel buffer by hand leaves a region of digital
+                    # silence that microphone audio never contains, and the
+                    # embedding model's output on it scores above threshold for
+                    # some classifiers -- which re-enters this branch and
+                    # re-creates the same state on every chunk.
+                    self.model.reset()
 
                     break
 
