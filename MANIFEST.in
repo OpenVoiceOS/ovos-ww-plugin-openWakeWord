@@ -1,4 +1,0 @@
-recursive-include ovos_ww_plugin_openwakeword/ *
-recursive-include requirements/ *
-include CHANGELOG.md
-include LICENSE
