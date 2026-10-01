@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.6a2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.6a2) (2026-10-01)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.6a1...0.4.6a2)
+
+**Closed issues:**
+
+- Post-detection buffer flush causes re-activations on the default hey\_mycroft model [\#38](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/38)
+- init default key\_phrase [\#2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/2)
+
+**Merged pull requests:**
+
+- test: regression test for post-detection re-fire fixed in \#39 [\#40](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/40) ([JarbasAl](https://github.com/JarbasAl))
+- fix: reset openWakeWord buffers after detection instead of zeroing them [\#39](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/39) ([mikejgray](https://github.com/mikejgray))
+
 ## [0.4.6a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.6a1) (2026-09-18)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.5a2...0.4.6a1)
