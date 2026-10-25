@@ -105,6 +105,7 @@ class TestDownloadScoping(unittest.TestCase):
         with patch("ovos_ww_plugin_openwakeword.download_models") as mock_download, \
                 patch("ovos_ww_plugin_openwakeword.openwakeword.Model") as mock_model:
             mock_model.return_value.models = {"alexa": object(), "hey_jarvis": object()}
+            mock_model.return_value.model_outputs = {"alexa": 1, "hey_jarvis": 1}
             OwwHotwordPlugin(key_phrase="hey_computer", config={"threshold": 0.5})
             # first the scoped, doomed-to-be-empty attempt, then the fallback
             mock_download.assert_any_call(["hey_computer"])
