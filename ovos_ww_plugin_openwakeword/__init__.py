@@ -12,6 +12,7 @@
 #
 
 import importlib.util
+import os
 
 import numpy as np
 from ovos_plugin_manager.templates.hotwords import HotWordEngine
@@ -101,7 +102,8 @@ class OwwHotwordPlugin(HotWordEngine):
             # instead of the full ~19 MB catalog for both frameworks.
             download_models([normalized_key_phrase])
             pretrained_models = openwakeword.get_pretrained_model_paths(inference_framework) or []
-            wakeword_models = [i for i in pretrained_models if normalized_key_phrase in i]
+            wakeword_models = [i for i in pretrained_models
+                               if normalized_key_phrase in os.path.basename(i)]
             if not wakeword_models:
                 # normalized_key_phrase is not a name openwakeword recognizes as
                 # a pretrained model, so the scoped download above silently
@@ -125,6 +127,25 @@ class OwwHotwordPlugin(HotWordEngine):
             inference_framework=inference_framework
         )
         self.model_names = list(self.model.models.keys())
+
+        # openwakeword keys model_class_mappings by base name ("timer"), but
+        # names a model loaded from a path by its file stem ("timer_v0.1"),
+        # so a pretrained multi-class model falls back to generic labels
+        # that include the background class. Its class_mapping_dicts
+        # argument cannot express this mapping either, so set it here.
+        if not explicit_models:
+            for mdl_name in self.model_names:
+                base_name = mdl_name.rsplit("_v", 1)[0]
+                if base_name in openwakeword.model_class_mappings:
+                    self.model.class_mapping[mdl_name] = openwakeword.model_class_mappings[base_name]
+
+        # A multi-class model predicts one score per class label, keyed by
+        # the label; a single-output model predicts one score keyed by its name.
+        self.model_labels = {
+            mdl_name: list(self.model.class_mapping[mdl_name].values())
+            if self.model.model_outputs[mdl_name] > 1 else [mdl_name]
+            for mdl_name in self.model_names
+        }
 
         # Define short buffer for audio to ensure correct chunk sizes
         self.audio_buffer = []
@@ -150,8 +171,9 @@ class OwwHotwordPlugin(HotWordEngine):
 
             # Check for score above threshold
             for mdl_name in self.model_names:
+                score = max(prediction[label] for label in self.model_labels[mdl_name])
                 # https://github.com/dscripka/openwakeword#threshold-scores-for-activation
-                if prediction[mdl_name] >= self.config.get("threshold", 0.5):
+                if score >= self.config.get("threshold", 0.5):
                     # Set flag indicating that a wakeword was detected
                     self.has_found = True
 
