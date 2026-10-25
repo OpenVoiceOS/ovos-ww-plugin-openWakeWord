@@ -12,6 +12,7 @@
 #
 
 import importlib.util
+import os
 
 import numpy as np
 from ovos_plugin_manager.templates.hotwords import HotWordEngine
@@ -101,7 +102,8 @@ class OwwHotwordPlugin(HotWordEngine):
             # instead of the full ~19 MB catalog for both frameworks.
             download_models([normalized_key_phrase])
             pretrained_models = openwakeword.get_pretrained_model_paths(inference_framework) or []
-            wakeword_models = [i for i in pretrained_models if normalized_key_phrase in i]
+            wakeword_models = [i for i in pretrained_models
+                               if normalized_key_phrase in os.path.basename(i)]
             if not wakeword_models:
                 # normalized_key_phrase is not a name openwakeword recognizes as
                 # a pretrained model, so the scoped download above silently
