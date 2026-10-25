@@ -1,62 +1,12 @@
 # Changelog
 
-## [0.4.6a2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.6a2) (2026-10-01)
+## [0.4.7a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.7a1) (2026-10-25)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.6a1...0.4.6a2)
-
-**Closed issues:**
-
-- Post-detection buffer flush causes re-activations on the default hey\_mycroft model [\#38](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/38)
-- init default key\_phrase [\#2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/issues/2)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.6...0.4.7a1)
 
 **Merged pull requests:**
 
-- test: regression test for post-detection re-fire fixed in \#39 [\#40](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/40) ([JarbasAl](https://github.com/JarbasAl))
-- fix: reset openWakeWord buffers after detection instead of zeroing them [\#39](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/39) ([mikejgray](https://github.com/mikejgray))
-
-## [0.4.6a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.6a1) (2026-09-18)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.5a2...0.4.6a1)
-
-**Merged pull requests:**
-
-- fix: install and run without tflite-runtime \(onnx default on py3.12+\) [\#36](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/36) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.4.5a2](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.5a2) (2026-08-01)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.5a1...0.4.5a2)
-
-**Merged pull requests:**
-
-- docs: rewrite README in Simplified Technical English [\#33](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/33) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.4.5a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.5a1) (2026-06-16)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.4a1...0.4.5a1)
-
-**Merged pull requests:**
-
-- fix: require ovos-plugin-manager\>=2.1.0 for opm.\* entry points and cap ovos-\* deps at next major [\#28](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/28) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.4.4a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.4a1) (2026-06-16)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.3a1...0.4.4a1)
-
-**Merged pull requests:**
-
-- fix: use canonical opm.\* entry-point group [\#27](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/27) ([JarbasAl](https://github.com/JarbasAl))
-
-## [0.4.3a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.3a1) (2026-06-15)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/V0.4.1...0.4.3a1)
-
-**Merged pull requests:**
-
-- test: ovoscope listener e2e \(openWakeWord\) + fix mel-buffer crash [\#23](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/23) ([JarbasAl](https://github.com/JarbasAl))
-- chore\(deps\): update dependency ovos-plugin-manager to v2 [\#18](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/18) ([renovate[bot]](https://github.com/apps/renovate))
-- chore\(deps\): update dependency python to 3.14 [\#12](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/12) ([renovate[bot]](https://github.com/apps/renovate))
-- chore: Configure Renovate [\#11](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/11) ([renovate[bot]](https://github.com/apps/renovate))
-- fix: compatibility with ovos-plugin-manager 1.X.X [\#10](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/10) ([JarbasAl](https://github.com/JarbasAl))
+- fix: score multi-class pretrained models such as timer [\#42](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/42) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
 
 
 
