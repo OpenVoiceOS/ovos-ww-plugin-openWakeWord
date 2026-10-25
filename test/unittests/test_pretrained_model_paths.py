@@ -20,6 +20,9 @@ class TestWakeWordInParentDirectory(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # Both formats of every pretrained model must exist before the copy,
+        # also when only one inference framework is installed.
+        openwakeword.utils.download_models()
         cls.tmp = tempfile.TemporaryDirectory()
         # One parent directory whose name contains every pretrained model name.
         models_dir = Path(cls.tmp.name, "-".join(openwakeword.MODELS), "models")
