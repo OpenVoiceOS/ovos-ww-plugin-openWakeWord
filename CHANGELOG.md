@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.9a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.9a1) (2026-10-25)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.8a1...0.4.9a1)
+
+**Merged pull requests:**
+
+- fix: download every pretrained model before the path test copies them [\#46](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/pull/46) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.4.8a1](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/tree/0.4.8a1) (2026-10-25)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-ww-plugin-openWakeWord/compare/0.4.7a1...0.4.8a1)
